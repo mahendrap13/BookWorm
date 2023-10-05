@@ -4,7 +4,7 @@ const auth = async (req, res, next) => {
   try {
     if (req.headers.authorization) {
       let token = req.headers.authorization;
-      let decodeToken = jwt.verify(token, process.env.SECRET_KEY);
+      let decodeToken = jwt.verify(token, secretkey12);
       if (decodeToken) {
         next();
       } else {

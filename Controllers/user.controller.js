@@ -56,6 +56,7 @@ export const SignUp = (req, res) => {
 
 export const SignIn = async (req, res) => {
   try {
+    
     const { email, password, username } = req.body;
     const checkuser = await userModel.findOne({
       $or: [
@@ -77,7 +78,7 @@ export const SignIn = async (req, res) => {
     }
     const token = jwt.sign(
       { userId: checkuser._id, email: checkuser.email },
-      process.env.SECRET_KEY || secretkey,
+      secretkey12,
       { expiresIn: "1h" }
     );
 
